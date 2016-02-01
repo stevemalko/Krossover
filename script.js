@@ -1,11 +1,12 @@
-var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4";
+			//Initialize some variables
+			var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4";
 			var app = angular.module('videoSlicer', []);
 			var _duration = 0;
 			var video = document.createElement('video');
 
  
 
-			
+			//Create directive for our custom video player list control
 			app.directive('videoPlayerList', function() {
 			  return {
 				restrict: 'E',
@@ -17,7 +18,7 @@ var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4
 			
 			
 		  
-	 	 
+	 	//Create the app controller
 		app.controller('MyControl', function($scope, $http){
 			$scope.titleHeader;
 			$scope.initialLoad = true;
@@ -35,15 +36,12 @@ var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4
 			
 			// Add a scene to the list
 			$scope.addScene = function () {
-				//console.log($scope.endTime +' - '+ _duration);
+ 
 				if($scope.startTime == null || $scope.endTime == null){ // checks to make sure the text fields are filled in
 					alert("You need to have a start time and an end time for your scene");
 				}
-				/*else if($scope.endTime > _duration){ // checks to make sure you didnt input an end time greater than the video length
-					
-					alert("You need to have an end time that is less than the total length of the video.");
-				}*/
-				else if($scope.startTime < $scope.endTime){
+ 
+				else if($scope.startTime < $scope.endTime){ // makes sure the user isnt inputting bogus times.
 					$scope.scenes.push({
 						Name: $scope.sceneName,
 						StartTime: Math.floor($scope.startTime),
@@ -161,6 +159,8 @@ var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4
 				EndTime: $scope._duration,
 				tags: "full movie"
 			});
+			
+			console.log($scope._duration);
 			
 			$scope.scenes.push({
 				Name: "Slice #1",
