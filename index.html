@@ -1,0 +1,43 @@
+<body ng-app="videoSlicer" ng-keydown="videoSelector($event)">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+		<script src="script.js"></script>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<title>Krossover Video Slice test</title> 
+	</head>
+	
+	<body ng-controller="MyControl as ctrl"> 
+		<div id="holder">
+			<video-Player-List></video-Player-List>
+			<div id="videoHolder"> <!--#t=2,4-->
+				<!--<video-player></video-player> -->
+				<h2>{{titleHeader}}</h2>
+				<p  ng-show="instructions">Start by clicking "Play scene" in the first item listed in the video clips on the left</p>
+				<video id="video" controls  src=""  width="800" type="video/mp4">
+				<!-- fallback -->
+				Your browser does not support the <code>video</code> element.
+				</video>
+
+				<!-- Slicer controls will only appear when a video is playing -->
+				<div id="slicingControls" ng-show="showSliceControls">
+					
+					<p>
+						Controls to create a new scene:<br>
+						You can either enter a start/end time (in seconds) or use a the "start from here" and "end here" buttons to mark where you want your clip to start and end. 
+					</p>
+					<input ng-model="sceneName"  placeholder="Enter Scene name"/> <br>
+					<input ng-model="startTime" id="startTime" placeholder="Enter Start Time" /> <button  ng-click="addStart()">Start from Current marker location</button><br>
+					<input ng-model="endTime" id="endTime" placeholder="Enter End Time" /> <button   ng-click="addEnd()">End from Current marker location</button><br>
+					<input ng-model="tags" id="tags" placeholder="Enter tags"/><br>
+					<button id="addSceneToList" ng-click="addScene()">Add Scene To List</button>
+					
+				</div>
+
+				
+			
+		</div>
+	</body>
+
+
+</body>

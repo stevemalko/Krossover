@@ -1,0 +1,19 @@
+<div id="videoList">
+	<p id="tagFiler"><strong>Search Filter:</strong> <input ng-model="filterText"   name="filterText"/></p>
+	<p>Use left and right arrows to skip between scenes</p>
+	<ul id="ListOfScenes" >
+		<li ng-repeat="scene in scenes | filter:filterText">
+
+				Scene Name: <input ng-model="scene.Name" value="{{scene.Name | capitalize}}"  name="sceneName"/><br>
+				<span ng-show="!$first">Start Time: <input ng-model="scene.StartTime" ng-show="!$first" value="{{scene.StartTime}}"  name="startTime"/> <br></span>
+				<span ng-show="!$first">End Time: <input ng-model="scene.EndTime" value="{{scene.EndTime}}"  name="endTime"/><br></span>
+				Tags: <input ng-model="scene.tags" value="{{scene.tags}}"  name="tags"/>  <br><br>
+				<button ng-click="playScene($index);" > Play Scene</button>
+				<button ng-click="update($index, scene)" >Update</button>
+				<button ng-click="remove($index)" ng-show="!$first">Remove</button>
+				<b>{{scene.Name | capitalize}}</b>
+		 
+		</li>
+	</ul>
+	<button ng-click="playAllScenes()">Play All Scenes</button>
+</div>
