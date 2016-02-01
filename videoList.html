@@ -4,13 +4,13 @@
 	<ul id="ListOfScenes" >
 		<li ng-repeat="scene in scenes | filter:filterText">
 
-				Scene Name: <input ng-model="scene.Name" value="{{scene.Name}}"  name="sceneName"/><br>
-				<span ng-show="!$first">Start Time: <input ng-model="scene.StartTime" ng-show="!$first" value="{{scene.StartTime}}"  name="startTime"/> <br></span>
-				<span ng-show="!$first">End Time: <input ng-model="scene.EndTime" value="{{scene.EndTime}}"  name="endTime"/><br></span>
-				Tags: <input ng-model="scene.tags" value="{{scene.tags}}"  name="tags"/>  <br><br>
-				<button ng-click="playScene($index);" > Play Scene</button>
-				<button ng-click="update($index, scene)" >Update</button>
-				<button ng-click="remove($index)" ng-show="!$first">Remove</button>
+			Scene Name: <input ng-model="scene.Name" value="{{scene.Name}}"  name="sceneName"/><br>
+			<span ng-show="!$first">Start Time: <input type="number" min="0" ng-model="scene.StartTime" ng-show="!$first" value="{{scene.StartTime}}"  name="startTime"/> <br></span>
+			<span ng-show="!$first">End Time: <input type="number" min="0" ng-model="scene.EndTime" value="{{scene.EndTime}}"  name="endTime"/><br></span>
+			Tags: <input ng-model="scene.tags" value="{{scene.tags}}"  name="tags"/>  <br><br>
+			<button ng-click="playScene($index);" > Play Scene</button>
+			<button ng-click="update($index, scene)" >Update</button>
+			<button ng-click="remove($index)" ng-show="!$first">Remove</button>
 		 
 		</li>
 	</ul>
