@@ -1,6 +1,6 @@
 <div id="videoList">
 	<p id="tagFiler"><strong>Search Filter:</strong> <input ng-model="filterText"   name="filterText"/></p>
-	<p>Use left and right arrows to skip between scenes</p>
+	<p>Use left and right arrows to skip between scenes. Start and End time are defined in seconds.</p>
 	<ul id="ListOfScenes" >
 		<li ng-repeat="scene in scenes | filter:filterText">
 
@@ -14,5 +14,4 @@
 		 
 		</li>
 	</ul>
-	<!--<button ng-click="playAllScenes()">Play All Scenes</button>-->
 </div>
