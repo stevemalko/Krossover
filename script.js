@@ -159,9 +159,7 @@
 				EndTime: $scope._duration,
 				tags: "full movie"
 			});
-			
-			console.log($scope._duration);
-			
+			 
 			$scope.scenes.push({
 				Name: "Slice #1",
 				StartTime: 5,
