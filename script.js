@@ -52,6 +52,7 @@
 			};
 			
 			
+			
 			// Add a scene to the list
 			$scope.addScene = function () {
 				if($scope.checkTiming($scope.startTime, $scope.endTime)){
