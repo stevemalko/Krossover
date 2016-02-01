@@ -4,14 +4,7 @@ var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4
 			var video = document.createElement('video');
 
  
-			
-			app.directive('videoPlayer', function() {
-			  return {
-				restrict: 'E',
-				//template : '<video id="video" controls  src="" type="video/mp4"/>'
-				templateUrl: "videoplayer.html"
-			  };
-			});
+
 			
 			app.directive('videoPlayerList', function() {
 			  return {
