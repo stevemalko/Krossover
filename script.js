@@ -31,17 +31,30 @@
  
 			];
 			
- 
+			
+			//Function to check that the start time and end time follow business rules (cant be greater than the duration or empty)
+			$scope.checkTiming = function(_start, _end){
+				if(_start == null || _end == null){ // checks to make sure the text fields are filled in
+					alert("You need to have a start time and an end time for your scene");
+					return false;
+				}
+				else if(_end > _duration){ // Checks to make sure the end time for the new slice is not greater than the duraton of the movie
+					alert("You can not have an end time greater than the total legnth of the movie.")
+					return false;
+				}
+				else if(_start < _end){ // makes sure the user isnt inputting bogus times.
+					return true;
+				}
+				else{
+					alert("The start time can not be equal to or greater than the end time");
+					return false;
+				}
+			};
 			
 			
 			// Add a scene to the list
 			$scope.addScene = function () {
- 
-				if($scope.startTime == null || $scope.endTime == null){ // checks to make sure the text fields are filled in
-					alert("You need to have a start time and an end time for your scene");
-				}
- 
-				else if($scope.startTime < $scope.endTime){ // makes sure the user isnt inputting bogus times.
+				if($scope.checkTiming($scope.startTime, $scope.endTime)){
 					$scope.scenes.push({
 						Name: $scope.sceneName,
 						StartTime: Math.floor($scope.startTime),
@@ -55,12 +68,11 @@
 					$scope.endTime = "";
 					$scope.tags = "";
 				}
-				else{
-					alert("The start time can not be equal to or greater than the end time");
-				}
-
+ 
 			};
 			
+			
+			//Select new video based on keyevent
 			$scope.videoSelector = function(keyEvent) {
 				switch (keyEvent.which) {
 				case 37: //left
@@ -92,17 +104,20 @@
 			//Removes a scene from the list
 			$scope.remove = function (index) {
 				
-				var r = confirm("Are you sure you want to delete the scene?");
-				if(r==true){
+				var msg = confirm("Are you sure you want to delete the scene?");
+				if(msg==true){
 					$scope.scenes.splice(index, 1);
 				}
 			};
 			
 			//updates a scene's data
 			$scope.update = function(index, scene){
-				$scope.scenes[index].Name = scene.Name;
-				$scope.scenes[index].StartTime = scene.StartTime;
-				$scope.scenes[index].EndTime = scene.EndTime; 
+				if($scope.checkTiming(scene.StartTime, scene.EndTime)){
+					$scope.scenes[index].Name = scene.Name;
+					$scope.scenes[index].StartTime = scene.StartTime;
+					$scope.scenes[index].EndTime = scene.EndTime; 
+				}
+
 			};
 			
 			//Play the scene from the list
@@ -139,6 +154,13 @@
 			
 			$("video").bind("loadeddata", function(){
 				 //console.log('loaded');
+				 
+			});
+			
+			$("video").bind("loadedmetadata", function(){
+				 //console.log('loadedmetadata');
+				 _duration = $('video').get(0).duration;
+				 
 				 
 			});
 			
