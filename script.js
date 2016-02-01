@@ -22,38 +22,7 @@ var videoSrc = "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4
 			
 			
 			
-			app.filter('secondsToDateTime', [function() {
-				return function(seconds) {
-					//return new Date(1970, 0, 1).setSeconds($scope.startTime);
-					return "test";
-				};
-			}])
 			
-			app.filter('millSecondsToTimeString', function() {
-			      var sec_num = parseInt(this, 10); // don't forget the second param
-				var hours   = Math.floor(sec_num / 3600);
-				var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-				var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-				if (hours   < 10) {hours   = "0"+hours;}
-				if (minutes < 10) {minutes = "0"+minutes;}
-				if (seconds < 10) {seconds = "0"+seconds;}
-				var time    = hours+':'+minutes+':'+seconds;
-				console.log(time);
-				return time;
-			});
-			
-			
- app.filter('capitalize', function() {
-    return function(input, scope) {
-        return input.toUpperCase();
-    }
-});
-
-function capitalize(input){
-	return input.toUpperCase();
-}
-
 		  
 	 	 
 		app.controller('MyControl', function($scope, $http){
@@ -68,10 +37,7 @@ function capitalize(input){
  
 			];
 			
-			
-			
-			
-			
+ 
 			
 			
 			// Add a scene to the list
@@ -145,7 +111,7 @@ function capitalize(input){
 			$scope.update = function(index, scene){
 				$scope.scenes[index].Name = scene.Name;
 				$scope.scenes[index].StartTime = scene.StartTime;
-				$scope.scenes[index].EndTime = scene.EndTime;
+				$scope.scenes[index].EndTime = scene.EndTime; 
 			};
 			
 			//Play the scene from the list
@@ -170,21 +136,6 @@ function capitalize(input){
 				
 			};
 			
- 
- 
-			
-			//Play all the scenes - not implementated
-			$scope.playAllScenes = function(){
-				if(videoIndex == undefined){
-					videoIndex = 0;
-				}
-				
-				var cutScene = videoSrc + "#t="+$scope.scenes[videoIndex].startTime+","+$scope.scenes[videoIndex].endTime;
-				$('video').attr('src',cutScene);
-				$('video').get(0).play();
-			 
-				 
-			};
 			
 			
 			
@@ -192,10 +143,6 @@ function capitalize(input){
 			
 			//Video player bindings
 			$("video").bind("pause", function() {
-				/*videoIndex++;
-				if(videoIndex < $scope.scenes.length){
-					$scope.playAllScenes();
-				}*/
 				//console.log('paused');
 			});
 			
@@ -250,17 +197,4 @@ function capitalize(input){
  
 		});
 		   
-		   String.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = hours+':'+minutes+':'+seconds;
-    return time;
-}
-
  
