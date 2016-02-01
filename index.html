@@ -29,8 +29,8 @@
 						You can either enter a start/end time (in seconds) or use a the "start from here" and "end here" buttons to mark where you want your clip to start and end. 
 					</p>
 					<input ng-model="sceneName"  placeholder="Enter Scene name"/> <br>
-					<input ng-model="startTime" id="startTime" placeholder="Enter Start Time" /> <button  ng-click="addStart()">Start from Current marker location</button><br>
-					<input ng-model="endTime" id="endTime" placeholder="Enter End Time" /> <button   ng-click="addEnd()">End from Current marker location</button><br>
+					<input type="number" min="0" ng-model="startTime" id="startTime" placeholder="Enter Start Time" /> <button  ng-click="addStart()">Start from Current marker location</button><br>
+					<input type="number" min="0" ng-model="endTime" id="endTime" placeholder="Enter End Time" /> <button   ng-click="addEnd()">End from Current marker location</button><br>
 					<input ng-model="tags" id="tags" placeholder="Enter tags"/><br>
 					<button id="addSceneToList" ng-click="addScene()">Add Scene To List</button>
 					
